@@ -1,4 +1,4 @@
-import { Component , Output  } from '@angular/core'
+import { Component  } from '@angular/core'
 
 @Component({
     selector : 'events-list',
@@ -6,9 +6,9 @@ import { Component , Output  } from '@angular/core'
     <div>
     <h1>Upcomming Angular Events </h1>
     <hr/>
-    <event-thumbnail 
-    (eventClick) = "handleEventClicked($event)"
-    [event] = "event1"></event-thumbnail>
+    <event-thumbnail #thumbnail [event] = "event1"></event-thumbnail>
+    <button class = "btn btn-primary" (click) = "thumbnail.logFoo()">
+    Log me some foo</button>
 </div>
     `
 })
@@ -26,8 +26,6 @@ export class  EventListComponent{
             country:'India'
         }
     }
-    handleEventClicked(data){
-        console.log('received:',data);
-    }
+
 
 }
